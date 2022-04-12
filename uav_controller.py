@@ -41,7 +41,7 @@ start = np.array([0,0,0])
 goal = start
 for i in range(3):
     tem_point = np.array([random.uniform(0,1), random.uniform(0,1), random.uniform(0,1)])
-    goal = np.concatenate((goal, tem_point))
+    goal = np.vstack((goal, tem_point))
 waypoints = goal
 print(waypoints)
 
