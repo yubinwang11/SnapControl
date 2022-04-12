@@ -35,7 +35,7 @@ waypoints, min_cost = rrt.plan()
 #scale the waypoints to real dimensions
 #waypoints = 0.02*waypoints
 start = np.array([0,0,0])
-goal = np.array([1,1,1])
+goal = np.array([1,1,0])
 waypoints = np.stack((start, goal))
 print(waypoints)
 
