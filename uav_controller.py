@@ -1,4 +1,3 @@
-from ctypes.wintypes import LANGID
 from random import random
 import numpy as np
 import random
