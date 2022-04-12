@@ -34,6 +34,7 @@ waypoints, min_cost = rrt.plan()
 
 #scale the waypoints to real dimensions
 waypoints = 0.02*waypoints
+print(waypoints)
 
 #Generate trajectory through waypoints
 traj = trajGenerator(waypoints, max_vel = 10, gamma = 1e6)
