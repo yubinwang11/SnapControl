@@ -1,3 +1,4 @@
+from ctypes.wintypes import LANGID
 from random import random
 import numpy as np
 import random
@@ -42,6 +43,8 @@ goal = start
 for i in range(10):
     tem_point = np.array([random.uniform(0,1), random.uniform(0,1), random.uniform(0,1)])
     goal = np.vstack((goal, tem_point))
+land = np.array([0,0,0])
+goal = np.vstack((goal,land))
 waypoints = goal
 print(waypoints)
 
