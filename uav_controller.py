@@ -38,9 +38,11 @@ waypoints, min_cost = rrt.plan()
 #waypoints = 0.02*waypoints
 start = np.array([0,0,0])
 #goal = np.array([1,1,0])
+goal = start
 for i in range(3):
-    goal = np.array([random.uniform(0,1), random.uniform(0,1), random.uniform(0,1)])
-    waypoints = np.stack((start, goal))
+    tem_point = np.array([random.uniform(0,1), random.uniform(0,1), random.uniform(0,1)])
+    goal = np.stack((goal, tem_point))
+waypoints = goal
 print(waypoints)
 
 #Generate trajectory through waypoints
