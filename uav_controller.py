@@ -39,7 +39,7 @@ waypoints, min_cost = rrt.plan()
 start = np.array([0,0,0])
 #goal = np.array([1,1,0])
 goal = start
-for i in range(3):
+for i in range(10):
     tem_point = np.array([random.uniform(0,1), random.uniform(0,1), random.uniform(0,1)])
     goal = np.vstack((goal, tem_point))
 waypoints = goal
