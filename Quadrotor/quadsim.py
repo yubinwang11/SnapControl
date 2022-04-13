@@ -49,9 +49,9 @@ class QuadSim:
         if ax is None:
             fig = plt.figure()
             ax = Axes3D.Axes3D(fig)
-            ax.set_xlim((0,2))
-            ax.set_ylim((0,2))
-            ax.set_zlim((0,2))
+            ax.set_xlim((0,1))
+            ax.set_ylim((0,1))
+            ax.set_zlim((0,1))
         ax.plot([], [], [], '-', c='red',zorder = 10)
         ax.plot([], [], [], '-', c='blue',zorder = 10)
         ax.plot([], [], [], '-', c='green', marker='o', markevery=2,zorder = 10)

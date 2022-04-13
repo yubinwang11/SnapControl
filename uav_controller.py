@@ -58,9 +58,9 @@ sim = QuadSim(controller,des_state,Tmax)
 #create a figure
 fig = plt.figure()
 ax = Axes3D.Axes3D(fig)
-ax.set_xlim((0,2))
-ax.set_ylim((0,2))
-ax.set_zlim((0,2))
+ax.set_xlim((0,1))
+ax.set_ylim((0,1))
+ax.set_zlim((0,1))
 
 #plot the waypoints and obstacles
 # rrt.draw_path(ax, waypoints)
