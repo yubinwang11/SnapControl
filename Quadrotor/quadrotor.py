@@ -24,20 +24,24 @@ class Quadrotor:
     params - system parameters struct, arm_length, g, mass, etc.
     """
 
-    def __init__(self, pos, attitude):
-        """ pos = [x,y,z] attitude = [rool,pitch,yaw]
+    def __init__(self, pos, attitude, state=None, USE_STEP=False):
+        """ pos = [x,y,z] attitude = [roll,pitch,yaw]
             """
-        self.state = np.zeros(13)
-        roll, pitch, yaw = attitude
-        rot    = RPYToRot(roll, pitch, yaw)
-        quat   = RotToQuat(rot)
-        self.state[0] = pos[0]
-        self.state[1] = pos[1]
-        self.state[2] = pos[2]
-        self.state[6] = quat[0]
-        self.state[7] = quat[1]
-        self.state[8] = quat[2]
-        self.state[9] = quat[3]
+        if USE_STEP == False:
+            self.state = np.zeros(13)
+            roll, pitch, yaw = attitude
+            rot = RPYToRot(roll, pitch, yaw)
+            
+            quat   = RotToQuat(rot)
+            self.state[0] = pos[0]
+            self.state[1] = pos[1]
+            self.state[2] = pos[2]
+            self.state[6] = quat[0]
+            self.state[7] = quat[1]
+            self.state[8] = quat[2]
+            self.state[9] = quat[3]
+        else:
+            self.state = state
         self.ode = integrate.ode(self.state_dot).set_integrator('vode',nsteps=500,method='bdf')
 
     def world_frame(self):

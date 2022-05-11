@@ -98,7 +98,7 @@ for i in range(8):
                  control_frequency,t,dt,state,des_state)
             U,M = quad_ctrl.Step()
             Quad.update(dt, U, M)
-            print(f"uav pos is {state.pos}")
+            #print(f"uav pos is {state.pos}")
             t += dt
 
         if USE_PLOT == True:    

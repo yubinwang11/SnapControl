@@ -1,3 +1,5 @@
+from random import random
+import time
 import numpy as np
 from numpy import linalg as LA
 from scipy import optimize
@@ -93,6 +95,7 @@ class trajGenerator:
 
         pos  = coeff@polyder(t)
         vel  = coeff@polyder(t,1)
+        #print(f"full vel is {vel}")
         accl = coeff@polyder(t,2)
         jerk = coeff@polyder(t,3)
 
@@ -102,8 +105,19 @@ class trajGenerator:
         return DesiredState(pos, vel, accl, jerk, yaw, yawdot)
 
     def get_yaw(self,vel):
-        curr_heading = vel/LA.norm(vel)
+        np.seterr(divide='ignore',invalid='ignore')
+        if LA.norm(vel) == 0:
+            curr_heading = np.array([0, 0])
+            print(f"current vel is {vel}")
+            print(f"curr_heading is {curr_heading}")
+            time.sleep(3)
+
+        else:
+            curr_heading = vel/LA.norm(vel)
+            print(f"current vel is {vel}")
+            print(f"curr_heading is {curr_heading}")
         prev_heading = self.heading
+        #print(f"prev_heading is {prev_heading}")
         cosine = max(-1,min(np.dot(prev_heading, curr_heading),1))
         dyaw = np.arccos(cosine)
         norm_v = np.cross(prev_heading,curr_heading)

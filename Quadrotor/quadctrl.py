@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as Axes3D
 from collections import deque
-from .quadrotor import Quadrotor
+from .quadrotor import Quadrotor, State
 
 class QuadCtrl:
     def __init__(self,controller,Tmax,animation_frequency,
@@ -24,6 +24,7 @@ class QuadCtrl:
         if(self.t >= self.Tmax):
             U, M = self.controller.run_hover(self.state, self.des_state,self.dt)
         else:
+            #print(self.state)
             U, M = self.controller.run(self.state, self.des_state)
         
         return U,M 
