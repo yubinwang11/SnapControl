@@ -113,3 +113,5 @@ class Quadrotor:
         # print(F)
         self.ode.set_initial_value(self.state,0).set_f_params([F,M])
         self.state = self.ode.integrate(self.ode.t + dt)
+
+        return self.state
