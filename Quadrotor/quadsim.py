@@ -31,11 +31,13 @@ class QuadSim:
         else:
             U, M = self.controller.run(state, des_state)
         self.Quadrotor.update(self.dt, U, M)
+        print(f"uav pos is {state.pos}")
         self.t += self.dt
 
     def control_loop(self):
         for _ in range(self.control_iterations):
             self.Step()
+            
         return self.Quadrotor.world_frame()
 
     def run(self,ax = None,save = False):
@@ -44,6 +46,7 @@ class QuadSim:
             frame = self.control_loop()
             self.update_plot(frame)
             plt.pause(self.animation_rate)
+        plt.close()
 
     def init_plot(self,ax = None):
         if ax is None:
