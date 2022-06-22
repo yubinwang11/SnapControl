@@ -108,14 +108,14 @@ class trajGenerator:
         np.seterr(divide='ignore',invalid='ignore')
         if LA.norm(vel) == 0:
             curr_heading = np.array([0, 0])
-            print(f"current vel is {vel}")
-            print(f"curr_heading is {curr_heading}")
+            #print(f"current vel is {vel}")
+            #print(f"curr_heading is {curr_heading}")
             time.sleep(3)
 
         else:
             curr_heading = vel/LA.norm(vel)
-            print(f"current vel is {vel}")
-            print(f"curr_heading is {curr_heading}")
+            #print(f"current vel is {vel}")
+            #print(f"curr_heading is {curr_heading}")
         prev_heading = self.heading
         #print(f"prev_heading is {prev_heading}")
         cosine = max(-1,min(np.dot(prev_heading, curr_heading),1))

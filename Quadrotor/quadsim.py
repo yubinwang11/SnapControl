@@ -31,7 +31,7 @@ class QuadSim:
         else:
             U, M = self.controller.run(state, des_state)
         self.Quadrotor.update(self.dt, U, M)
-        print(f"uav pos is {state.pos}")
+        #print(f"uav pos is {state.pos}")
         self.t += self.dt
 
     def control_loop(self):
