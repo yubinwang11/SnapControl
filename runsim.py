@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d.axes3d as Axes3D
+import time
 
 from PathPlanning import RRTStar, Map
 from TrajGen import trajGenerator, Helix_waypoints, Circle_waypoints
@@ -34,7 +35,7 @@ waypoints, min_cost = rrt.plan()
 
 #scale the waypoints to real dimensions
 waypoints = 0.02*waypoints
-print(waypoints)
+#print(waypoints)
 
 #Generate trajectory through waypoints
 traj = trajGenerator(waypoints, max_vel = 10, gamma = 1e6)
@@ -55,5 +56,7 @@ ax.set_zlim((0,2))
 rrt.draw_path(ax, waypoints)
 mapobs.plotobs(ax, scale = 0.02)
 
+print(obstacles)
+time.sleep(30)
 #run simulation
 sim.run(ax)
