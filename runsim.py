@@ -57,6 +57,6 @@ rrt.draw_path(ax, waypoints)
 mapobs.plotobs(ax, scale = 0.02)
 
 print(obstacles)
-time.sleep(30)
+#time.sleep(30)
 #run simulation
 sim.run(ax)
