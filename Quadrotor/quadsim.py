@@ -41,12 +41,15 @@ class QuadSim:
         self.Quadrotor.update(self.dt, U, M)
         #print(f"uav pos is {state.pos}")
         self.t += self.dt
-        self.energy_consump = power_consump * self.dt
-        self.energy_consump = round(self.energy_consump, 8)
+        self.energy_consump = power_consump * self.dt       
         print(self.energy_consump)
         
-        self.total_energy_consumption += self.energy_consump
+        if self.energy_consump < 10000:
+            pass
+        else:
+            self.total_energy_consumption += self.energy_consump
         print(self.total_energy_consumption)
+        
         self.total_flight_time += self.dt
 
 
