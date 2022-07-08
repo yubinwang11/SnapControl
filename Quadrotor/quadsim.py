@@ -23,7 +23,7 @@ class QuadSim:
 
         self.pos_history = deque(maxlen=100)
 
-        self.total_energy_comsumption = 0
+        self.total_energy_consumption = 0
         self.total_flight_time = 0
 
     def Step(self):
@@ -44,7 +44,7 @@ class QuadSim:
         energy_consump = power_consump * self.dt
         print(energy_consump)
 
-        self.total_energy_comsumption += energy_consump
+        self.total_energy_consumption += energy_consump
         self.total_flight_time += self.dt
 
 
@@ -60,7 +60,8 @@ class QuadSim:
             frame = self.control_loop()
             self.update_plot(frame)
             plt.pause(self.animation_rate)
-        print(f"total energy consumption is {self.total_energy_comsumption}, and total flight time is {self.total_flight_time}")
+            
+        print(f"total energy consumption is {self.total_energy_consumption}, and total flight time is {self.total_flight_time}")
         plt.close()
 
     def init_plot(self,ax = None):
