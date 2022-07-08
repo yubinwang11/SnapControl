@@ -23,7 +23,7 @@ class QuadSim:
 
         self.pos_history = deque(maxlen=100)
 
-        self.total_energy_consumption = 0
+        self.total_energy_consumption = np.float(0)
         self.total_flight_time = 0
         self.energy_consump = None
 
@@ -41,7 +41,8 @@ class QuadSim:
         self.Quadrotor.update(self.dt, U, M)
         #print(f"uav pos is {state.pos}")
         self.t += self.dt
-        self.energy_consump = format(power_consump * self.dt, '.8f')
+        self.energy_consump = power_consump * self.dt
+        self.energy_consump = format(self.energy_consump, '.8f')
         print(self.energy_consump)
         
         self.total_energy_consumption += self.energy_consump
