@@ -25,6 +25,7 @@ class QuadSim:
 
         self.total_energy_consumption = 0
         self.total_flight_time = 0
+        self.energy_consump = None
 
     def Step(self):
         des_state = self.des_state(self.t)
@@ -41,16 +42,17 @@ class QuadSim:
         #print(f"uav pos is {state.pos}")
         self.t += self.dt
 
-        energy_consump = power_consump * self.dt
-        print(energy_consump)
+        self.energy_consump = power_consump * self.dt
+        print(self.energy_consump)
 
-        self.total_energy_consumption = self.total_energy_consumption + energy_consump
         self.total_flight_time += self.dt
 
 
     def control_loop(self):
         for _ in range(self.control_iterations):
             self.Step()
+
+            self.total_energy_consumption = self.total_energy_consumption + self.energy_consump
             
         return self.Quadrotor.world_frame()
 
