@@ -5,6 +5,12 @@ g = 9.81 # m/s^2
 arm_length = 0.086 # meter
 height = 0.05
 
+## new add
+drag_coeff = 0.0613
+lift_coeff = 1.2
+air_density = 1.225
+width = arm_length * 2
+
 I = np.array([(0.00025, 0, 2.55e-6),
               (0, 0.000232, 0),
               (2.55e-6, 0, 0.0003738)]);
