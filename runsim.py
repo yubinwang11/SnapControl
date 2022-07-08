@@ -34,8 +34,8 @@ start = np.array([0,0,0])
 goal = np.array([100,100,100])
 
 rrt = RRTStar(start = start, goal = goal,
-              Map = mapobs, max_iter = 500,
-              goal_sample_rate = 0.1)
+              Map = mapobs, max_iter = 50,
+              goal_sample_rate = 0.1) ## 默认迭代500次
 
 waypoints, min_cost = rrt.plan()
 
