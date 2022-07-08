@@ -1,4 +1,4 @@
-#from rtree import index
+from rtree import index
 import numpy as np
 from matplotlib.pyplot import Rectangle
 

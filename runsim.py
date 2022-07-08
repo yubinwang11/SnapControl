@@ -8,7 +8,6 @@ from TrajGen import trajGenerator, Helix_waypoints, Circle_waypoints
 from Quadrotor import QuadSim
 import controller
 np.random.seed(8)
-
 '''
 # 3D boxes   lx, ly, lz, hx, hy, hz
 obstacles = [[-5, 25, 0, 20, 35, 60],
@@ -23,6 +22,7 @@ obstacles = [[0.3 * 100, 0.25 * 100, 0 * 100, 0.35 * 100, 0.3 * 100, 1 * 100],
              [0.45 * 100, 0.75 * 100, 0 * 100, 0.55 * 100, 0.85 * 100, 0.5 * 100],
              [0.05 * 100, 0.65 * 100, 0 * 100, 0.1 * 100, 0.7 * 100, 1 * 100],
              [0.7 * 100, 0.55 * 100, 0 * 100, 0.8 * 100, 0.6 * 100, 1 * 100]]
+
 
 # limits on map dimensions
 bounds = np.array([0,100])
