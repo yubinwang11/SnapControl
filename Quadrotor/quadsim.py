@@ -31,6 +31,7 @@ class QuadSim:
         state = self.Quadrotor.get_state()
 
         power_consump = self.Quadrotor.power_consumption()
+        print(power_consump)
 
         if(self.t >= self.Tmax):
             U, M = self.controller.run_hover(state, des_state,self.dt)
