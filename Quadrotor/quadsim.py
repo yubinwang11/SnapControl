@@ -23,9 +23,15 @@ class QuadSim:
 
         self.pos_history = deque(maxlen=100)
 
+        self.total_energy_comsumption = 0
+        self.total_flight_time = 0
+
     def Step(self):
         des_state = self.des_state(self.t)
         state = self.Quadrotor.get_state()
+
+        power_consump = self.Quadrotor.power_consumption()
+
         if(self.t >= self.Tmax):
             U, M = self.controller.run_hover(state, des_state,self.dt)
         else:
@@ -33,6 +39,10 @@ class QuadSim:
         self.Quadrotor.update(self.dt, U, M)
         #print(f"uav pos is {state.pos}")
         self.t += self.dt
+
+        self.total_energy_comsumption += power_consump * self.dt
+        self.total_flight_time += self.dt
+
 
     def control_loop(self):
         for _ in range(self.control_iterations):
@@ -46,6 +56,7 @@ class QuadSim:
             frame = self.control_loop()
             self.update_plot(frame)
             plt.pause(self.animation_rate)
+        print("total energy consumption is {self.total_energy_consumpption}, and total flight time is {self.total_flight_time}")
         plt.close()
 
     def init_plot(self,ax = None):

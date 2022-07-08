@@ -119,3 +119,12 @@ class Quadrotor:
         self.state = self.ode.integrate(self.ode.t + dt)
 
         return self.state
+
+    def power_consumption(self):
+            ## considering high speed flight and wind speed is zero
+        state = self.get_state()
+        first_term = (params.drag_coeff/params.lift_coeff)*(params.mass*np.linalg.norm(state.vel))
+        second_term = params.mass**2/(params.air_density*(params.width**2)*np.linalg.norm(state.vel))
+        power_comsump = first_term + second_term
+
+        return power_comsump
