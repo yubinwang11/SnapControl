@@ -45,7 +45,7 @@ class QuadSim:
         self.energy_consump = power_consump * self.dt
         
         self.total_energy_consumption = self.total_energy_consumption + self.energy_consump
-        print(self.total_energy_consumption)
+        #print(self.total_energy_consumption)
         self.total_flight_time += self.dt
 
 
