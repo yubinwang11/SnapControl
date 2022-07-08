@@ -31,7 +31,7 @@ class QuadSim:
         state = self.Quadrotor.get_state()
 
         power_consump = self.Quadrotor.power_consumption()
-        print(power_consump)
+        #print(power_consump)
 
         if(self.t >= self.Tmax):
             U, M = self.controller.run_hover(state, des_state,self.dt)
@@ -41,7 +41,10 @@ class QuadSim:
         #print(f"uav pos is {state.pos}")
         self.t += self.dt
 
-        self.total_energy_comsumption += power_consump * self.dt
+        energy_consump = power_consump * self.dt
+        print(energy_consump)
+
+        self.total_energy_comsumption += energy_consump
         self.total_flight_time += self.dt
 
 
