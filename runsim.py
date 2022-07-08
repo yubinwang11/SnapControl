@@ -9,6 +9,7 @@ from Quadrotor import QuadSim
 import controller
 np.random.seed(8)
 
+'''
 # 3D boxes   lx, ly, lz, hx, hy, hz
 obstacles = [[-5, 25, 0, 20, 35, 60],
              [30, 25, 0, 55, 35, 100],
@@ -16,6 +17,12 @@ obstacles = [[-5, 25, 0, 20, 35, 60],
              [45, 75, 0, 55, 85, 100],
              [-5, 65, 0, 30, 70, 100],
              [70, 50, 0, 80, 80, 100]]
+'''
+
+obstacles = [[0.3 * 100, 0.25 * 100, 0 * 100, 0.35 * 100, 0.3 * 100, 1 * 100],
+             [0.45 * 100, 0.75 * 100, 0 * 100, 0.55 * 100, 0.85 * 100, 0.5 * 100],
+             [0.05 * 100, 0.65 * 100, 0 * 100, 0.1 * 100, 0.7 * 100, 1 * 100],
+             [0.7 * 100, 0.55 * 100, 0 * 100, 0.8 * 100, 0.6 * 100, 1 * 100]]
 
 # limits on map dimensions
 bounds = np.array([0,100])
@@ -23,8 +30,8 @@ bounds = np.array([0,100])
 mapobs = Map(obstacles, bounds, dim = 3)
 
 #plan a path from start to goal
-start = np.array([80,20,10])
-goal = np.array([30,80,80])
+start = np.array([0,0,0])
+goal = np.array([100,100,100])
 
 rrt = RRTStar(start = start, goal = goal,
               Map = mapobs, max_iter = 500,
@@ -34,7 +41,7 @@ waypoints, min_cost = rrt.plan()
 
 
 #scale the waypoints to real dimensions
-waypoints = 0.02*waypoints
+waypoints = 0.01*waypoints
 #print(waypoints)
 
 #Generate trajectory through waypoints
