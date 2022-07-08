@@ -56,7 +56,7 @@ class QuadSim:
             frame = self.control_loop()
             self.update_plot(frame)
             plt.pause(self.animation_rate)
-        print("total energy consumption is {self.total_energy_consumpption}, and total flight time is {self.total_flight_time}")
+        print(f"total energy consumption is {self.total_energy_consumpption}, and total flight time is {self.total_flight_time}")
         plt.close()
 
     def init_plot(self,ax = None):
