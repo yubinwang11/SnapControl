@@ -44,7 +44,7 @@ class QuadSim:
         energy_consump = power_consump * self.dt
         print(energy_consump)
 
-        self.total_energy_consumption += energy_consump
+        self.total_energy_consumption = self.total_energy_consumption + energy_consump
         self.total_flight_time += self.dt
 
 
@@ -60,7 +60,7 @@ class QuadSim:
             frame = self.control_loop()
             self.update_plot(frame)
             plt.pause(self.animation_rate)
-            
+
         print(f"total energy consumption is {self.total_energy_consumption}, and total flight time is {self.total_flight_time}")
         plt.close()
 
